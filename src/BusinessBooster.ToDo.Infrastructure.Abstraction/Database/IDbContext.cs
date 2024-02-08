@@ -14,12 +14,17 @@ public interface IDbContext : IDbContextWithSave
     DbSet<User> Users { get; set; }
     
     /// <summary>
-    /// Collection of application tasks.
+    /// Collection of plans.
     /// </summary>
-    // DbSet<Task> Tasks { get; set; }
+    DbSet<Plan> Plans { get; set; }
     
     /// <summary>
-    /// Collection of application to do lists.
+    /// Collection of planned tasks.
     /// </summary>
-    // DbSet<ToDoList> ToDoLists { get; set; }
+    DbSet<PlannedTask> Tasks { get; set; }
+
+    /// <summary>
+    /// History of task statuses.
+    /// </summary>
+    DbSet<TaskStatusRecord> TaskStatusHistory { get; set; }
 }

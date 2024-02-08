@@ -21,10 +21,15 @@ public class Plan
     public string? Description { get; set; }
     
     /// <summary>
-    /// Collection of planned tasks.
+    /// Created at date.
     /// </summary>
-    public ICollection<PlannedTask> Tasks { get; set; }
-
+    public DateTime CreatedAt { get; set; }
+    
+    /// <summary>
+    /// Removed at date.
+    /// </summary>
+    public DateTime? RemovedAt { get; set; }
+    
     /// <summary>
     /// User id.
     /// </summary>
@@ -34,4 +39,9 @@ public class Plan
     /// User.
     /// </summary>
     public User User { get; set; }
+    
+    /// <summary>
+    /// Collection of planned tasks.
+    /// </summary>
+    public ICollection<PlannedTask> Tasks { get; set; }
 }

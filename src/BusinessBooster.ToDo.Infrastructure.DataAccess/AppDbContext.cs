@@ -11,10 +11,13 @@ namespace BusinessBooster.ToDo.Infrastructure.DataAccess;
 public class AppDbContext : IdentityDbContext<User, Role, long>, IDbContext
 {
     /// <inheritdoc />
-    // public DbSet<Task> Tasks { get; set; }
+    public DbSet<Plan> Plans { get; set; }
     
     /// <inheritdoc />
-    // public DbSet<ToDoList> ToDoLists { get; set; }
+    public DbSet<PlannedTask> Tasks { get; set; }
+
+    /// <inheritdoc />
+    public DbSet<TaskStatusRecord> TaskStatusHistory { get; set; }
     
     /// <summary>
     /// Constructor.

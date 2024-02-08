@@ -26,11 +26,6 @@ public class PlannedTask
     public DateTime CreatedAt { get; set; }
     
     /// <summary>
-    /// Status.
-    /// </summary>
-    public TaskStatus Status { get; set; }
-    
-    /// <summary>
     /// Plan Id.
     /// </summary>
     public int PlanId { get; set; }
@@ -39,4 +34,14 @@ public class PlannedTask
     /// Plan.
     /// </summary>
     public Plan Plan { get; set; }
+
+    /// <summary>
+    /// History of task statuses.
+    /// </summary>
+    public ICollection<TaskStatusRecord> StatusHistory { get; set; }
+
+    /// <summary>
+    /// Task status.
+    /// </summary>
+    public TaskStatus Status => StatusHistory.LastOrDefault()?.Status ?? TaskStatus.Pending;
 }
