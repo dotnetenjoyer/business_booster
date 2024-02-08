@@ -1,0 +1,34 @@
+﻿using BusinessBooster.ToDo.Domain.Entities;
+using BusinessBooster.ToDo.Infrastructure.Abstraction.Database;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace BusinessBooster.ToDo.Infrastructure.DataAccess;
+
+/// <summary>
+/// Application database context.
+/// </summary>
+public class AppDbContext : IdentityDbContext<User, Role, long>, IDbContext
+{
+    /// <inheritdoc />
+    // public DbSet<Task> Tasks { get; set; }
+    
+    /// <inheritdoc />
+    // public DbSet<ToDoList> ToDoLists { get; set; }
+    
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="options">The options to be used by a <see cref="Microsoft.EntityFrameworkCore.DbContext" />.</param>
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+    
+    /// <inheritdoc />
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+    }
+}

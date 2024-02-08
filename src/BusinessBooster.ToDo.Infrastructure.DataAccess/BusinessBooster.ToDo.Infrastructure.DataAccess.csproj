@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BusinessBooster.ToDo.Domain\BusinessBooster.ToDo.Domain.csproj" />
+      <ProjectReference Include="..\BusinessBooster.ToDo.Infrastructure.Abstraction\BusinessBooster.ToDo.Infrastructure.Abstraction.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="EntitiesConfigurations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
