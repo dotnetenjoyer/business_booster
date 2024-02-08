@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessBooster.ToDo.UseCas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessBooster.ToDo.Infrastructure.DataAccess", "BusinessBooster.ToDo.Infrastructure.DataAccess\BusinessBooster.ToDo.Infrastructure.DataAccess.csproj", "{8613FA37-B1F6-4BFF-A0CA-6FD6864FA2BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessBooster.ToDo.UseCases.Common", "BusinessBooster.ToDo.UseCases.Common\BusinessBooster.ToDo.UseCases.Common.csproj", "{5E988AD9-E544-4347-BB95-933DBAB961EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{8613FA37-B1F6-4BFF-A0CA-6FD6864FA2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8613FA37-B1F6-4BFF-A0CA-6FD6864FA2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8613FA37-B1F6-4BFF-A0CA-6FD6864FA2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E988AD9-E544-4347-BB95-933DBAB961EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E988AD9-E544-4347-BB95-933DBAB961EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E988AD9-E544-4347-BB95-933DBAB961EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E988AD9-E544-4347-BB95-933DBAB961EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

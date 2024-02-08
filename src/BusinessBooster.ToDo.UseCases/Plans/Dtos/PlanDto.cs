@@ -1,6 +1,6 @@
 using BusinessBooster.ToDo.Domain.Entities;
 
-namespace BusinessBooster.ToDo.UseCases.Plans.GetPlan;
+namespace BusinessBooster.ToDo.UseCases.Plans.Dtos;
 
 /// <summary>
 /// Plan DTO.

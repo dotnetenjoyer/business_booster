@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using BusinessBooster.ToDo.Domain.Exceptions;
 using BusinessBooster.ToDo.Infrastructure.Abstraction.Database;
 using BusinessBooster.ToDo.Infrastructure.Abstraction.Services;
+using BusinessBooster.ToDo.UseCases.Plans.Dtos;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

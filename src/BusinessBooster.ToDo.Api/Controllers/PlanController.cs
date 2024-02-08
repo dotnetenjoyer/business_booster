@@ -2,9 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using MediatR;
 using BusinessBooster.ToDo.UseCases;
+using BusinessBooster.ToDo.UseCases.Common.Pagination;
+using BusinessBooster.ToDo.UseCases.Plans.Dtos;
 using BusinessBooster.ToDo.UseCases.Plans.GetPlan;
 using BusinessBooster.ToDo.UseCases.Plans.RemovePlan;
 using BusinessBooster.ToDo.UseCases.Plans.SavePlan;
+using BusinessBooster.ToDo.UseCases.Plans.SearchPlans;
 
 namespace BusinessBooster.ToDo.Api.Controllers;
 
@@ -31,8 +34,15 @@ public class PlanController : ControllerBase
     /// </summary>
     [HttpGet("{id}")]
     public Task<PlanDto> GetPlanAsync(int id, CancellationToken cancellationToken)
-        => mediator.Send(new GetPlanQuery(id), cancellationToken); 
+        => mediator.Send(new GetPlanQuery(id), cancellationToken);
 
+    /// <summary>
+    /// Search for plans.
+    /// </summary>
+    [HttpPost("search")]
+    public Task<PagedListMetadataDto<PlanDto>> SearchPlansAsync(SearchPlansQuery query, CancellationToken cancellationToken)
+        => mediator.Send(query, cancellationToken); 
+    
     /// <summary>
     /// Saves a plan. 
     /// </summary>

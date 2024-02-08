@@ -1,6 +1,6 @@
 using AutoMapper;
 using BusinessBooster.ToDo.Domain.Entities;
-using BusinessBooster.ToDo.UseCases.Plans.GetPlan;
+using BusinessBooster.ToDo.UseCases.Plans.Dtos;
 using BusinessBooster.ToDo.UseCases.Plans.SavePlan;
 
 namespace BusinessBooster.ToDo.UseCases.Plans;

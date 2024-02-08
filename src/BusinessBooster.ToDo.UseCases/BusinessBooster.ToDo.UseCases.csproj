@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\BusinessBooster.ToDo.Domain\BusinessBooster.ToDo.Domain.csproj" />
       <ProjectReference Include="..\BusinessBooster.ToDo.Infrastructure.Abstraction\BusinessBooster.ToDo.Infrastructure.Abstraction.csproj" />
+      <ProjectReference Include="..\BusinessBooster.ToDo.UseCases.Common\BusinessBooster.ToDo.UseCases.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
