@@ -11,7 +11,7 @@ namespace BusinessBooster.ToDo.UseCases.User.Refresh;
 /// <summary>
 /// Handler for <see cref="RefreshAuthenticationCommand"/>.
 /// </summary>
-public class RefreshAuthenticationCommandHandler : IRequestHandler<RefreshAuthenticationCommand, Tokens>
+internal class RefreshAuthenticationCommandHandler : IRequestHandler<RefreshAuthenticationCommand, Tokens>
 {
     private readonly UserManager<AppUser> userManager;
     private readonly ITokenService tokenService;
@@ -50,6 +50,7 @@ public class RefreshAuthenticationCommandHandler : IRequestHandler<RefreshAuthen
     {
         var claims = new List<Claim>
         {
+            new (ClaimTypes.NameIdentifier, user.Id.ToString()),
             new (ClaimTypes.Email, user.Email)
         };
 

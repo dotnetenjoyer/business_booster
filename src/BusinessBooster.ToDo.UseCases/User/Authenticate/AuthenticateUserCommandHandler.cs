@@ -10,7 +10,7 @@ namespace BusinessBooster.ToDo.UseCases.User.Authenticate;
 /// <summary>
 /// Handler for <see cref="AuthenticateUserCommand"/>.
 /// </summary>
-public class AuthenticateUserCommandHandler : IRequestHandler<AuthenticateUserCommand, Tokens>
+internal class AuthenticateUserCommandHandler : IRequestHandler<AuthenticateUserCommand, Tokens>
 {
     private readonly SignInManager<AppUser> signInManager;
     private readonly ITokenService tokenService;
@@ -65,6 +65,7 @@ public class AuthenticateUserCommandHandler : IRequestHandler<AuthenticateUserCo
     {
         var claims = new List<Claim>
         {
+            new (ClaimTypes.NameIdentifier, user.Id.ToString()),
             new (ClaimTypes.Email, user.Email)
         };
 

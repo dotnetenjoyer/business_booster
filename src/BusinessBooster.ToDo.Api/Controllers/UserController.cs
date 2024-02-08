@@ -11,7 +11,7 @@ namespace BusinessBooster.ToDo.Api.Controllers;
 /// Contains API methods to manage application users.
 /// </summary>
 [ApiController]
-[Route("/api/[controller]")]
+[Route("/api/user")]
 public class UserController : ControllerBase
 {
     private readonly IMediator mediator;

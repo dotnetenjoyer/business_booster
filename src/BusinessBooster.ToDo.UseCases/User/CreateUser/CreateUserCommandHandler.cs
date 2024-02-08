@@ -8,7 +8,7 @@ namespace BusinessBooster.ToDo.UseCases.User.CreateUser;
 /// <summary>
 /// Handler for <see cref="CreateUserCommand"/>.
 /// </summary>
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IdDto<long>>
+internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IdDto<long>>
 {
     private readonly UserManager<Domain.Entities.User> userManager;
     private readonly IMapper mapper;
