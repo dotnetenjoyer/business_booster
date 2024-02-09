@@ -17,5 +17,8 @@ public class PlansProfile : Profile
     {
         CreateMap<SavePlanCommand, Plan>();
         CreateMap<Plan, PlanDto>();
+        
+        CreateMap<Plan, DetailedPlanDto>();
+        CreateMap<PlannedTask, TaskDto>();
     }
 }

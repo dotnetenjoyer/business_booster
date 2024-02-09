@@ -13,18 +13,21 @@ namespace BusinessBooster.ToDo.UseCases.Plans.SavePlan;
 /// </summary>
 internal class SavePlanCommandHandler : IRequestHandler<SavePlanCommand, IdDto<int>>
 {
+    private readonly ILoggedUserAccessor loggedUserAccessor;
     private readonly IDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly ILoggedUserAccessor loggedUserAccessor;
+    private readonly PlansService plansService;
     
     /// <summary>
     /// Constructor.
     /// </summary>
-    public SavePlanCommandHandler(IDbContext dbContext, IMapper mapper, ILoggedUserAccessor loggedUserAccessor)
+    public SavePlanCommandHandler(IDbContext dbContext, IMapper mapper, ILoggedUserAccessor loggedUserAccessor, 
+        PlansService plansService)
     {
         this.dbContext = dbContext;
         this.mapper = mapper;
         this.loggedUserAccessor = loggedUserAccessor;
+        this.plansService = plansService;
     }
 
     /// <inheritdoc />
@@ -51,22 +54,11 @@ internal class SavePlanCommandHandler : IRequestHandler<SavePlanCommand, IdDto<i
 
     private async Task<IdDto<int>> SavePlanAsync(SavePlanCommand command, CancellationToken cancellationToken)
     {
-        var loggedUserId = loggedUserAccessor.GetCurrentUserId();
-
-        var plan = await dbContext.Plans
-            .Where(x => x.Id == command.Id && x.UserId == loggedUserId)
-            .FirstOrDefaultAsync(cancellationToken);
-
-        if (plan == null)
-        {
-            throw new NotFoundException("No plan with the specified identifier was found.");
-        }
-
+        var plan = await plansService.FindPlanAsync(command.Id.Value, cancellationToken);
         plan.Name = command.Name;
         plan.Description = command.Description;
-
         await dbContext.SaveChangesAsync(cancellationToken);
-        
+
         return plan.Id;
     }
 }

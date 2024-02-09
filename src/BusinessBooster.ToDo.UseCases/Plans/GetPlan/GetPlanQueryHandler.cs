@@ -12,7 +12,7 @@ namespace BusinessBooster.ToDo.UseCases.Plans.GetPlan;
 /// <summary>
 /// Query handler for <see cref="GetPlanQuery"/>
 /// </summary>
-internal class GetPlanQueryHandler : IRequestHandler<GetPlanQuery, PlanDto>
+internal class GetPlanQueryHandler : IRequestHandler<GetPlanQuery, DetailedPlanDto>
 {
     private readonly IDbContext dbContext;
     private readonly ILoggedUserAccessor loggedUserAccessor;
@@ -29,13 +29,14 @@ internal class GetPlanQueryHandler : IRequestHandler<GetPlanQuery, PlanDto>
     }
 
     /// <inhertidoc />
-    public async Task<PlanDto> Handle(GetPlanQuery query, CancellationToken cancellationToken)
+    public async Task<DetailedPlanDto> Handle(GetPlanQuery query, CancellationToken cancellationToken)
     {
         var loggedUserId = loggedUserAccessor.GetCurrentUserId();
-        
         var plan = await dbContext.Plans
+            .Include(x => x.Tasks)
+            .ThenInclude(x => x.TaskStatusRecords)
             .Where(x => x.Id == query.Id && x.UserId == loggedUserId)
-            .ProjectTo<PlanDto>(mapper.ConfigurationProvider)
+            .ProjectTo<DetailedPlanDto>(mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(cancellationToken);
 
         if (plan == null)

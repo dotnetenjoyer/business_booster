@@ -22,7 +22,7 @@ public class ExceptionMiddleware
     {
         [typeof(NotImplementedException)] = StatusCodes.Status501NotImplemented,
         [typeof(DomainException)] = StatusCodes.Status400BadRequest,
-        // [typeof(NotFoundException)] = StatusCodes.Status404NotFound,
+        [typeof(NotFoundException)] = StatusCodes.Status404NotFound,
         [typeof(ValidationException)] = StatusCodes.Status400BadRequest,
     };
     

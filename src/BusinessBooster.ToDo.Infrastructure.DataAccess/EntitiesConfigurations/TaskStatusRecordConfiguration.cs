@@ -12,7 +12,7 @@ public class TaskStatusRecordConfiguration : IEntityTypeConfiguration<TaskStatus
     /// <inheritdoc />
     public void Configure(EntityTypeBuilder<TaskStatusRecord> entity)
     {
-        entity.ToTable("tasks_status_record");
+        entity.ToTable("tasks_status_records");
 
         entity.HasKey(e => new { e.TaskId, e.CreatedAt });
 

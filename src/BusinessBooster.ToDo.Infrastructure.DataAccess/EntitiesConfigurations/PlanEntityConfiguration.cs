@@ -27,10 +27,6 @@ public class PlanEntityConfiguration : IEntityTypeConfiguration<Plan>
         entity.Property(e => e.CreatedAt)
             .HasColumnType("timestamp")
             .HasDefaultValueSql("(now())");
-        
-        entity.Property(e => e.RemovedAt)
-            .HasColumnType("timestamp")
-            .HasComment("For soft-deletes");
 
         entity.HasOne(e => e.User)
             .WithMany()
@@ -39,7 +35,5 @@ public class PlanEntityConfiguration : IEntityTypeConfiguration<Plan>
         entity.HasMany(e => e.Tasks)
             .WithOne(t => t.Plan)
             .HasForeignKey(x => x.PlanId);
-        
-        entity.HasQueryFilter(e => e.RemovedAt == null);
     }
 }

@@ -32,7 +32,7 @@ public class PlannedTaskConfiguration : IEntityTypeConfiguration<PlannedTask>
             .WithMany(p => p.Tasks)
             .HasForeignKey(e => e.PlanId);
 
-        entity.HasMany(e => e.StatusHistory)
+        entity.HasMany(e => e.TaskStatusRecords)
             .WithOne(r => r.Task)
             .HasForeignKey(r => r.TaskId);
     }

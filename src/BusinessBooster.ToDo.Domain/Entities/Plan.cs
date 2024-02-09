@@ -26,11 +26,6 @@ public class Plan
     public DateTime CreatedAt { get; set; }
     
     /// <summary>
-    /// Removed at date.
-    /// </summary>
-    public DateTime? RemovedAt { get; set; }
-    
-    /// <summary>
     /// User id.
     /// </summary>
     public long UserId { get; set; }

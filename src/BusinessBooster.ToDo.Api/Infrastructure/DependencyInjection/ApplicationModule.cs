@@ -1,6 +1,7 @@
 using BusinessBooster.ToDo.Api.Infrastructure.Jwt;
 using BusinessBooster.ToDo.Api.Infrastructure.Services;
 using BusinessBooster.ToDo.Infrastructure.Abstraction.Services;
+using BusinessBooster.ToDo.UseCases.Plans;
 
 namespace BusinessBooster.ToDo.Api.Infrastructure.DependencyInjection;
 
@@ -18,5 +19,7 @@ public class ApplicationModule
     {
         services.AddSingleton<ITokenService, JWTTokenService>();
         services.AddScoped<ILoggedUserAccessor, LoggedUserAccessor>();
+
+        services.AddScoped<PlansService>();
     }
 }

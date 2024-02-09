@@ -24,4 +24,22 @@ public class TaskStatusRecord
     /// Created at date.
     /// </summary>
     public DateTime CreatedAt { get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="task">Task.</param>
+    /// <param name="status">Status.</param>
+    public TaskStatusRecord(PlannedTask task, TaskStatus status)
+    {
+        Task = task;
+        Status = status;
+    }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public TaskStatusRecord()
+    {
+    }
 }

@@ -33,7 +33,7 @@ public class PlanController : ControllerBase
     /// Get plan by id.
     /// </summary>
     [HttpGet("{id}")]
-    public Task<PlanDto> GetPlanAsync(int id, CancellationToken cancellationToken)
+    public Task<DetailedPlanDto> GetPlanAsync(int id, CancellationToken cancellationToken)
         => mediator.Send(new GetPlanQuery(id), cancellationToken);
 
     /// <summary>

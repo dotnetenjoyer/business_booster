@@ -5,7 +5,7 @@ namespace BusinessBooster.ToDo.Domain.Entities;
 /// </summary>
 public class PlannedTask
 {
-    /// <summary>
+    /// <summary> 
     /// Id.
     /// </summary>
     public int Id { get; init; }
@@ -36,12 +36,23 @@ public class PlannedTask
     public Plan Plan { get; set; }
 
     /// <summary>
-    /// History of task statuses.
-    /// </summary>
-    public ICollection<TaskStatusRecord> StatusHistory { get; set; }
+    /// Task status records.
+    /// </summary>e
+    public List<TaskStatusRecord> TaskStatusRecords { get; set; } = new();
 
     /// <summary>
     /// Task status.
     /// </summary>
-    public TaskStatus Status => StatusHistory.LastOrDefault()?.Status ?? TaskStatus.Pending;
+    public TaskStatus Status
+    {
+        get
+        {
+            if (TaskStatusRecords == null)
+            {
+                throw new InvalidOperationException("To get the status of a task, you need to upload the task status records.");
+            }
+
+            return TaskStatusRecords.LastOrDefault()?.Status ?? TaskStatus.Pending;
+        }
+    }
 }

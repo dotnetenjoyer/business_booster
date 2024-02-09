@@ -7,4 +7,4 @@ namespace BusinessBooster.ToDo.UseCases.Plans.GetPlan;
 /// Query to get plan.
 /// </summary>
 /// <param name="Id"></param>
-public record GetPlanQuery(int Id) : IRequest<PlanDto>;
+public record GetPlanQuery(int Id) : IRequest<DetailedPlanDto>;
