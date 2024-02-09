@@ -16,18 +16,18 @@ internal class SavePlanCommandHandler : IRequestHandler<SavePlanCommand, IdDto<i
     private readonly ILoggedUserAccessor loggedUserAccessor;
     private readonly IDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly PlansService plansService;
+    private readonly PlanService _planService;
     
     /// <summary>
     /// Constructor.
     /// </summary>
     public SavePlanCommandHandler(IDbContext dbContext, IMapper mapper, ILoggedUserAccessor loggedUserAccessor, 
-        PlansService plansService)
+        PlanService planService)
     {
         this.dbContext = dbContext;
         this.mapper = mapper;
         this.loggedUserAccessor = loggedUserAccessor;
-        this.plansService = plansService;
+        this._planService = planService;
     }
 
     /// <inheritdoc />
@@ -54,7 +54,7 @@ internal class SavePlanCommandHandler : IRequestHandler<SavePlanCommand, IdDto<i
 
     private async Task<IdDto<int>> SavePlanAsync(SavePlanCommand command, CancellationToken cancellationToken)
     {
-        var plan = await plansService.FindPlanAsync(command.Id.Value, cancellationToken);
+        var plan = await _planService.FindPlanAsync(command.Id.Value, cancellationToken);
         plan.Name = command.Name;
         plan.Description = command.Description;
         await dbContext.SaveChangesAsync(cancellationToken);

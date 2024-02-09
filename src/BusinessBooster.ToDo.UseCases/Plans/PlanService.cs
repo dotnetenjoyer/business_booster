@@ -9,7 +9,7 @@ namespace BusinessBooster.ToDo.UseCases.Plans;
 /// <summary>
 /// Contains common methods to mange plans.
 /// </summary>
-public class PlansService
+public class PlanService
 {
     private readonly ILoggedUserAccessor loggedUserAccessor;
     private readonly IDbContext dbContext;
@@ -17,7 +17,7 @@ public class PlansService
     /// <summary>
     /// Constructor.
     /// </summary>
-    public PlansService(ILoggedUserAccessor loggedUserAccessor, IDbContext dbContext)
+    public PlanService(ILoggedUserAccessor loggedUserAccessor, IDbContext dbContext)
     {
         this.loggedUserAccessor = loggedUserAccessor;
         this.dbContext = dbContext;

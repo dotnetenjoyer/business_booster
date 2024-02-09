@@ -20,6 +20,6 @@ public class ApplicationModule
         services.AddSingleton<ITokenService, JWTTokenService>();
         services.AddScoped<ILoggedUserAccessor, LoggedUserAccessor>();
 
-        services.AddScoped<PlansService>();
+        services.AddScoped<PlanService>();
     }
 }

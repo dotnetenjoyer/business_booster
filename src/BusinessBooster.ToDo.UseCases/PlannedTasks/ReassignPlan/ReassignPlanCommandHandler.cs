@@ -14,17 +14,17 @@ public class ReassignPlanCommandHandler : IRequestHandler<ReassignPlanCommand>
 {
     private readonly ILoggedUserAccessor loggedUserAccessor;
     private readonly IDbContext dbContext;
-    private readonly PlansService plansService;
+    private readonly PlanService _planService;
 
     /// <summary>
     /// Constructor.
     /// </summary>
     public ReassignPlanCommandHandler(ILoggedUserAccessor loggedUserAccessor, 
-        IDbContext dbContext, PlansService plansService)
+        IDbContext dbContext, PlanService planService)
     {
         this.loggedUserAccessor = loggedUserAccessor;
         this.dbContext = dbContext;
-        this.plansService = plansService;
+        this._planService = planService;
     }
 
     /// <inheritdoc />
@@ -40,7 +40,7 @@ public class ReassignPlanCommandHandler : IRequestHandler<ReassignPlanCommand>
             throw new NotFoundException("Task with the specified identifier were not found");
         }
 
-        task.Plan = await plansService.FindPlanAsync(command.PlanId, cancellationToken);
+        task.Plan = await _planService.FindPlanAsync(command.PlanId, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 }

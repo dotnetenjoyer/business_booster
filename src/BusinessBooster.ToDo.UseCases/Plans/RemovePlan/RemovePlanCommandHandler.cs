@@ -12,22 +12,22 @@ internal class RemovePlanCommandHandler : IRequestHandler<RemovePlanCommand>
 {
     private readonly IDbContext dbContext;
     private readonly ILoggedUserAccessor loggedUserAccessor;
-    private readonly PlansService planService;
+    private readonly PlanService _planService;
 
     /// <summary>
     /// Constructor.
     /// </summary>
-    public RemovePlanCommandHandler(IDbContext dbContext, ILoggedUserAccessor loggedUserAccessor, PlansService planService)
+    public RemovePlanCommandHandler(IDbContext dbContext, ILoggedUserAccessor loggedUserAccessor, PlanService planService)
     {
         this.dbContext = dbContext;
         this.loggedUserAccessor = loggedUserAccessor;
-        this.planService = planService;
+        this._planService = planService;
     }
 
     /// <inhertidoc />
     public async Task Handle(RemovePlanCommand command, CancellationToken cancellationToken)
     {
-        var plan = await planService.FindPlanAsync(command.Id, cancellationToken);
+        var plan = await _planService.FindPlanAsync(command.Id, cancellationToken);
         if (plan.Tasks.Count > 0)
         {
             throw new DomainException("You cannot delete a plan with assigned tasks.");

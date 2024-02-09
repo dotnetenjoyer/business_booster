@@ -2,9 +2,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using BusinessBooster.ToDo.UseCases;
+using BusinessBooster.ToDo.UseCases.PlannedTasks.CreateTask;
 using BusinessBooster.ToDo.UseCases.PlannedTasks.ReassignPlan;
 using BusinessBooster.ToDo.UseCases.PlannedTasks.RemoveTask;
-using BusinessBooster.ToDo.UseCases.PlannedTasks.SaveTask;
+using BusinessBooster.ToDo.UseCases.PlannedTasks.UpdateTask;
 
 namespace BusinessBooster.ToDo.Api.Controllers;
 
@@ -27,10 +28,17 @@ public class TaskController : ControllerBase
     }
 
     /// <summary>
-    /// Saves a task.
+    /// Creates a task.
     /// </summary>
     [HttpPost]
-    public Task<IdDto<int>> SaveAsync(SaveTaskCommand command, CancellationToken cancellationToken)
+    public Task<IdDto<int>> CreateAsync(CreateTaskCommand command, CancellationToken cancellationToken)
+        => mediator.Send(command, cancellationToken); 
+
+    /// <summary>
+    /// Update a task.
+    /// </summary>
+    [HttpPut]
+    public Task<IdDto<int>> UpdateAsync(UpdateTaskCommand command, CancellationToken cancellationToken)
         => mediator.Send(command, cancellationToken);
 
     /// <summary>

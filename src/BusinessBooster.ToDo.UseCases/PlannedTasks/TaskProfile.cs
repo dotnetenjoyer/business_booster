@@ -1,6 +1,6 @@
 using AutoMapper;
 using BusinessBooster.ToDo.Domain.Entities;
-using BusinessBooster.ToDo.UseCases.PlannedTasks.SaveTask;
+using BusinessBooster.ToDo.UseCases.PlannedTasks.CreateTask;
 
 namespace BusinessBooster.ToDo.UseCases.PlannedTasks;
 
@@ -14,6 +14,6 @@ public class TaskProfile : Profile
     /// </summary>
     public TaskProfile()
     {
-        CreateMap<SaveTaskCommand, PlannedTask>();
+        CreateMap<CreateTaskCommand, PlannedTask>();
     }
 }
