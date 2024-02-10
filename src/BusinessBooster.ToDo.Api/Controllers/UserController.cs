@@ -4,6 +4,7 @@ using BusinessBooster.ToDo.UseCases;
 using BusinessBooster.ToDo.UseCases.User.Authenticate;
 using BusinessBooster.ToDo.UseCases.User.CreateUser;
 using BusinessBooster.ToDo.UseCases.User.Refresh;
+using BusinessBooster.ToDo.UseCases.User.UpdateUser;
 
 namespace BusinessBooster.ToDo.Api.Controllers;
 
@@ -24,20 +25,25 @@ public class UserController : ControllerBase
     {
         this.mediator = mediator;
     }
+
+    /// <summary>
+    /// Updates user.
+    /// </summary>
+    [HttpPost]
+    public Task UpdateAsync(UpdateUserCommand command, CancellationToken cancellationToken)
+        => mediator.Send(command, cancellationToken); 
     
     /// <summary>
     /// Authenticates an user.
     /// </summary>
-    [HttpPost]
-    [Route("auth")]
+    [HttpPost("auth")]
     public Task<Tokens> AuthenticateAsync(AuthenticateUserCommand command, CancellationToken cancellationToken)
         => mediator.Send(command, cancellationToken);
 
     /// <summary>
     /// Register an user.
     /// </summary>
-    [HttpPost]
-    [Route("register")]
+    [HttpPost("register")]
     public Task<IdDto<long>> RegisterAsync(CreateUserCommand command, CancellationToken cancellationToken) 
         => mediator.Send(command, cancellationToken);
 
